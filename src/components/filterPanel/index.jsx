@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button, Input } from 'antd';
+import { Form, Button, Input, DatePicker, InputNumber } from 'antd';
 import './FilterPanel.css';
 
 const formItemLayout = {
@@ -35,7 +35,7 @@ class FilterPanel extends React.Component {
     this.handleFormConfigList = this.handleFormConfigList.bind(this);
     this.handleFormConfigItem = this.handleFormConfigItem.bind(this);
 
-    this.renderInput = this.renderInput.bind(this);
+    this.renderSingleInput = this.renderSingleInput.bind(this);
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onReset = this.onReset.bind(this);
@@ -63,16 +63,20 @@ class FilterPanel extends React.Component {
   handleFormConfigItem(formConfigItem) {
     const { formType } = formConfigItem;
     switch (formType) {
+      case 'date':
+        return this.renderSingleInput(formConfigItem, <DatePicker style={{ width: '100%' }} />);
+      case 'number':
+        return this.renderSingleInput(formConfigItem, <InputNumber style={{ width: '100%' }} />);
       case 'input':
       default:
-        return this.renderInput(formConfigItem);
+        return this.renderSingleInput(formConfigItem, <Input />);
     }
   }
 
-  renderInput(inputConfig) {
+  renderSingleInput(config, ele) {
     const { form: { getFieldDecorator } } = this.props;
-    const { property: { valueType, label, defaultValue = '', rules } } = inputConfig;
-    const inputEle = getFieldDecorator(valueType, { initialValue: defaultValue, rules })(<Input />);
+    const { property: { valueType, label, defaultValue, rules } } = config;
+    const inputEle = getFieldDecorator(valueType, { initialValue: defaultValue, rules })(ele);
     const inputForm = (<Form.Item label={label} key={valueType}>{inputEle}</Form.Item>);
     return inputForm;
   }
@@ -99,9 +103,9 @@ FilterPanel.defaultProps = {
   resetText: '重置',
   formConfigList: [
     { formType: 'input', property: { valueType: 'accountNo', defaultValue: '123', rules: [{ required: true }], label: '账号', customConfig: { placeholder: '请输入账号' } } },
-    { formType: 'input', property: { valueType: 'accountNo2', label: '账号', customConfig: { placeholder: '请输入账号' } } },
-    { formType: 'input', property: { valueType: 'accountNo3', label: '账号', customConfig: { placeholder: '请输入账号' } } },
-    { formType: 'input', property: { valueType: 'accountNo4', label: '账号', customConfig: { placeholder: '请输入账号' } } },
-    { formType: 'input', property: { valueType: 'accountNo5', label: '账号', customConfig: { placeholder: '请输入账号' } } },
+    { formType: 'date', property: { valueType: 'date', label: '日期', rules: [{ required: true }] } },
+    { formType: 'number', property: { valueType: 'number', label: '数字' } },
+    { formType: 'input', property: { valueType: 'accountNo4', label: '账号' } },
+    { formType: 'input', property: { valueType: 'accountNo5', label: '账号' } },
   ],
 };
