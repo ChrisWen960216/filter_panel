@@ -10,6 +10,7 @@
         "react/forbid-prop-types":"off",
         "max-len":"off",
         "no-underscore-dangle":"off",
-        "object-curly-newline":"off"
+        "object-curly-newline":"off",
+        "react/destructuring-assignment":"off"
     }
 }
