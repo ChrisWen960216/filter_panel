@@ -1,0 +1,13 @@
+.filterPanel{
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1000px;
+}
+.filterPanel >*{
+  width: 50%;
+}
+
+.filterPanel .confirm_btn{
+  margin-left: 15px;
+}
