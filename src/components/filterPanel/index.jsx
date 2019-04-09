@@ -123,6 +123,6 @@ FilterPanel.defaultProps = {
     { formType: 'dateRange', property: { valueType: 'dateRange', label: '日期范围' } },
     { formType: 'week', property: { valueType: 'week', label: '星期' } },
     { formType: 'month', property: { valueType: 'month', label: '月份' } },
-    { formType: 'numberRange', property: { valueType: 'numberRange', label: '数字范围', defaultValue: [100, 200], rules: [{ required: true }] } },
+    { formType: 'numberRange', property: { valueType: 'numberRange', label: '数字范围', rules: [{ required: true }] } },
   ],
 };

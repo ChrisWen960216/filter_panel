@@ -14,8 +14,8 @@ export default class NumberRange extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startNum: this.props.value[0],
-      endNum: this.props.value[1],
+      startNum: this.props.value ? this.props.value[0] : '',
+      endNum: this.props.value ? this.props.value[1] : '',
     };
     this.onInputChange = this.onInputChange.bind(this);
     this.handleRangeNumber = this.handleRangeNumber.bind(this);
