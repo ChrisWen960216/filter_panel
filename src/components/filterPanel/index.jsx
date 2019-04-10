@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Button, Input, DatePicker, InputNumber } from 'antd';
 import moment from 'moment';
 import NumberRange from '../numberRange';
+import WeekRange from '../weekRange';
 import 'moment/locale/zh-cn';
 import './FilterPanel.css';
 
@@ -81,6 +82,8 @@ class FilterPanel extends React.Component {
         return this.renderSingleInput(formConfigItem, <InputNumber style={{ width: '100%' }} />);
       case 'numberRange':
         return this.renderSingleInput(formConfigItem, <NumberRange />);
+      case 'weekRange':
+        return this.renderSingleInput(formConfigItem, <WeekRange />);
       case 'input':
         return this.renderSingleInput(formConfigItem, <Input />);
       default:
@@ -124,5 +127,6 @@ FilterPanel.defaultProps = {
     { formType: 'week', property: { valueType: 'week', label: '星期' } },
     { formType: 'month', property: { valueType: 'month', label: '月份' } },
     { formType: 'numberRange', property: { valueType: 'numberRange', label: '数字范围', rules: [{ required: true }] } },
+    { formType: 'weekRange', property: { valueType: 'weekRange', label: '星期范围' } },
   ],
 };
