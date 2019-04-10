@@ -11,8 +11,9 @@ const { WeekPicker } = DatePicker;
  *  Created By ChrisWen
  *  RangeWeek component provide week range select function.
  *
- *  @prop {moment} startWeek --- 开始的星期
- *  @prop {moment} endWeek --- 结束的星期
+ *  @prop {[startWeek,endWeek]} value --- 开始,结束的星期
+ *  @prop {moment} value.startWeek --- 开始的星期
+ *  @prop {moment} value.endWeek --- 结束的星期
  *  @prop {({startWeek,endWeek}) => void} onChange --- 变化的回调
  */
 
